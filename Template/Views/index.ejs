@@ -1,0 +1,26 @@
+<%- include('../partials/header') -%>
+
+    <h1>Welcome to file sharing app</h1>
+
+    <form id="upload-form" >
+    <input type="file" name="file" id="file">
+    </form>
+
+    <div id="result" class="result-container">
+        <h3>Your download link:</h3>
+        <a id="downloadLink" href="">
+        </a>
+        
+        <h3>Email this link:</h3>
+        <form id="emailForm">
+            <label>Sender's name</label>
+            <input type="text" name="sender" required>
+            <label>Reciever's name</label>
+            <input type="text" name="receiver" required>
+            <button type="submit" id='sendButton'>Send</button>
+        </form>
+    </div>
+
+    <div id="emailSent"></div>
+
+<%- include('../partials/footer') -%>
