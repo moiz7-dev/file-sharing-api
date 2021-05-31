@@ -1,14 +1,22 @@
 const router = require('express').Router()
-const multer = require('multer')
-const File = require('../models/files')
 const path = require('path')
+const multer = require('multer')
 const { v4: uuidv4 } = require('uuid')
+const fs = require('fs')
+const File = require('../models/files')
 const sendMail = require('../services/emailService')
 const renderMailTemplate = require('../services/emailTemplate')
 
 let storage = multer.diskStorage({
     destination: function (req, file, cb) {
+
+        if(!fs.existsSync('uploads')){
+            fs.mkdirSync('uploads')
+            return cb(null, 'uploads')
+        }
+        
         return cb(null, 'uploads')
+        
     },
     filename: function (req, file, cb) {
 
